@@ -81,7 +81,7 @@ router.get('/edituser', withAuth, (req, res) => {
     })
     .then(userData => {
         if(!userData) {
-            res.status(404.json {message: "No user found"});
+            res.status(404).json({message: "No user found"});
             return;
         }
         const user = userData.get({plain:true});
