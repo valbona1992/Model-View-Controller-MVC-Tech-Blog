@@ -91,7 +91,7 @@ router.post('/login', (req, res) => {
     });
 });
 
-router.post('/logouy', withAuth, (req, res) => {
+router.post('/logout', withAuth, (req, res) => {
     if (req.session.loggedIn) {
         req.session.destroy(() => {
             res.status(204).end();
@@ -103,7 +103,7 @@ router.post('/logouy', withAuth, (req, res) => {
 
 router.put('/:id', withAuth, (req, res) => {
     User.update(req.body, {
-        individualHooks: true; 
+        individualHooks: true,
         where: {
             id: req.params.id
         }
@@ -121,5 +121,20 @@ router.put('/:id', withAuth, (req, res) => {
 });
 
 router.delete('/:id', withAuth, (req, res) => {
-    
-})
+    User.destroy({
+        where: {
+            id: req.params.id
+        }
+    })
+    .then(userData => {
+        if(!userData) {
+            res.status(404).json({message: 'No user found'});
+            return;
+        }
+    })
+    .catch(err => {
+        res.status(500).json(err);
+    });
+});
+
+module.exports = router;
