@@ -8,7 +8,7 @@ const seedAll = async () => {
     await seedUsers();
     await seedPosts();
     await seedComments();
-
+    console.log("DONE")
     process.exit(0);
 };
 

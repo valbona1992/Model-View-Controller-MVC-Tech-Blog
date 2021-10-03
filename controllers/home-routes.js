@@ -5,7 +5,7 @@ const { Post, User, Comment} = require('../model');
 // Gets the homepage rendered
 router.get('/', (req, res) => {
     Post.findAll({
-        attributes: ['id', 'title', 'date', 'post'],
+        attributes: ['id', 'title', 'date', 'content'],
         order: [['date', 'DESC']],
         include: [
             {
@@ -24,6 +24,7 @@ router.get('/', (req, res) => {
     })
     .then(postData => {
         const posts = postData.map(post => post.get({plain: true }));
+        console.log(req.session.loggedIn);
         res.render('homepage', {
             posts,
             loggedIn: req.session.loggedIn
@@ -40,7 +41,7 @@ router.get('/post/:id', (req, res) => {
         where: {
             id: req.params.id
         },
-        attributes: ['id', 'title', 'date', 'post'],
+        attributes: ['id', 'title', 'date', 'content'],
         include: [
             {
                 model: User,
@@ -62,7 +63,7 @@ router.get('/post/:id', (req, res) => {
             return;
         }
         const post = postData.get({plane: true});
-        res.render('singlepost', {
+        res.render('single-post', {
             post,
             loggedIn: req.session.loggedIn
         });
@@ -75,6 +76,7 @@ router.get('/post/:id', (req, res) => {
 // gets the login page
 router.get('/login', (req, res) => {
     if(req.session.loggedIn){
+        console.log("logged in");
         res.redirect('/');
         return;
     }
@@ -82,7 +84,7 @@ router.get('/login', (req, res) => {
 });
 
 // gets the signup page
-router.get('signup', (req, res) => {
+router.get('/signup', (req, res) => {
     if(req.session.loggedIn){
         res.redirect('/');
         return;

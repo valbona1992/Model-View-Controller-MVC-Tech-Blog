@@ -1,16 +1,50 @@
-  <h2 class="title">create new blog post</h2><hr>
-
-  <form class="new-post-form">
-    <div>
-      <label for="post-title">title:</label>
-      <input class="input" type="text" id="post-title" name="post-title" placeholder="insert blog title here"/>
+<a class="list-group btn list-item main-list single-post" data-toggle="collapse" href="#collapseExample" role="button"
+    aria-expanded="false" aria-controls="collapseExample">
+    <span class="float-left">{{title}}</span>
+</a>
+<div class="collapse mb-3" id="collapseExample">
+    <div class="card dashboard-card">
+        <div class="list-item">
+            <div class="card-header">
+                <span>{{post.title}}</span>
+                <span class="float-right">Posted by: {{post.username}} on {{format_date post.date}}</span>
+            </div>
+            <div class="card-body content-card">
+                {{post.content}}
+            </div>
+        </div>
     </div>
-    <div>
-      <label for="post-content">content:</label>
-      <input class="textarea is-large" id="post-content" name="post-content" placeholder="insert blog content here"/>
+    <div class="card dashboard-card">
+        <div class="card-header">
+            <h4>Add Comment</h4>
+        </div>
+        <form method="POST" action="/api/comments" class="card-body">
+            <div class="card-body content-card">
+                <div class="form-group">
+                    <label for="post_id">Post ID:</label>
+                    <input type="text" name="post_id" value="{{id}}" id="post_id" readonly />
+                </div>
+                <div class="form-group">
+                    <label for="user_name">User Name:</label>
+                    <input type="text" name="user_name" value="{{logged_name}}" id="user_name" readonly />
+                </div>
+                <div class="form-group">
+                    <label for="commentary">Comment</label>
+                    <textarea type="text" name="commentary" id="commentary" class="col-sm-12 form-input"></textarea>
+                </div>
+                <button type="submit" class="btn btn-dark col-sm-12">Comment</button>
+            </div>
+        </form>
     </div>
-    <button type="submit" class="button is-primary is-pulled-right">create post</button>
-  </form>
-</section>
-
-<script src="/javascript/add-post.js"></script>
+</div>
+{{#each comments as |comment|}}
+<div class="card dashboard-card">
+    <div class="card-header">
+        <h4>Comment</h4>
+    </div>
+    <div class="card-body content-card">
+        <h4>{{comment}}</h4>
+        <footer class="blockquote-footer">Commented by: {{username}} on {{format_date date_created}}</footer>
+    </div>
+</div>
+{{/each}}

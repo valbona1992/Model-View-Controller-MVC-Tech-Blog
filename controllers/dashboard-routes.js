@@ -5,6 +5,7 @@ const withAuth = require('../utils/auth');
 
 // renders dashboard if user is logged in 
 router.get('/', withAuth, (req, res) => {
+    console.log("/dashboard route")
     Post.findAll({
         where: {
             user_id: req.session.user_id

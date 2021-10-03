@@ -1,18 +1,25 @@
-[
+const { Post } = require('../model');
+
+const postData = [
     {
-      "postTitle": "Vegan Life",
-      "postContent": "Living a sustainable life",
-      "userId": 1
+      "title": "Vegan Life",
+      "content": "Living a sustainable life",
+      "user_id": 1
     },
     {
-      "postTitle": "Healthcare",
-      "postContent": "Striving for a more integrative care for all.",
-      "userId": 2
+      "title": "Healthcare",
+      "content": "Striving for a more integrative care for all.",
+      "user_id": 2
     },
     {
-      "postTitle": "Spirituality",
-      "postContent": "Allowing yourself to be your most vulnerable and having awareness of a higher power",
-      "userId": 3
+      "title": "Spirituality",
+      "content": "Allowing yourself to be your most vulnerable and having awareness of a higher power",
+      "user_id": 3
     }
   ];
   
+
+
+const seedPosts = () => Post.bulkCreate(postData);
+
+module.exports = seedPosts;

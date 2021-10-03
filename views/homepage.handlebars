@@ -4,10 +4,10 @@
 
  <div class="card cardLink">
     <div class="card-body">
-      <a href="api/post/{{post.id}}">
+      <a href="/post/{{post.id}}">
         <h5 class="card-title" style="display: inline-block">{{title}}</h5>
         <p class="card-description">{{description}}</p>
-        <span class="card-author" style="text-align: right; display: flex">Created by {{post.user.name}} on {{format_date createdAt}}</span>
+        <span class="card-author" style="text-align: right; display: flex">Created by {{post.user.username}} on {{format_date date}}</span>
       </a>
     </div>
   </div>

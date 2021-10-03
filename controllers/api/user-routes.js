@@ -25,7 +25,7 @@ router.get('/:id', (req, res) => {
             },
             {
             model: Comment,
-            attributes: ['id', 'title', 'content', 'date'],
+            attributes: ['id', 'title', 'comment', 'date'],
             include: {
                 model: Post,
                 attributes: ['title']
@@ -46,9 +46,10 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', (req, res) => {
+    console.log("route post / user slapped");
     User.create({
         username: req.body.username,
-        email: req.body.password,
+        email: req.body.email,
         password: req.body.password
     })
     .then(userData => {
@@ -61,6 +62,7 @@ router.post('/', (req, res) => {
         });
     })
     .catch(err => {
+        console.error(err);
         res.status(500).json(err);
     });
 });

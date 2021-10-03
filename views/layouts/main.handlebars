@@ -11,10 +11,10 @@
 <body>
   <header class="display-flex justify-space-between align-center p-2">
     <h1>
-      MVC Tech Blog 
+      MVC Tech Blog
     </h1>
    <nav>
-    {{#if logged_in}}
+    {{#if loggedIn}}
          <a href="/" class="navbar-item  pt-1">homepage</a>
             <a href="/dashboard" class="navbar-item pt-1">dashboard</a>
             <a href="/dashboard/create/" class="navbar-item pt-1 mr-4">create post</a>
@@ -33,7 +33,7 @@
   </footer>
 
   
-  {{#if logged_in}}
+  {{#if loggedIn}}
   <script src="/js/logout.js"></script>
   {{/if}}
 </body>
