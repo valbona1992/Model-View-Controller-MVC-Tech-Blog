@@ -1,0 +1,25 @@
+<div>
+  <h3>My Posts</h3>
+</div>
+{{#if posts}}
+  <div class="col-md-12 post-list">
+    <!-- Loop over each object in the posts array -->
+    {{#each posts as |post| }}
+      <div class="card cardLink">
+        <div class="card-body">
+          <a href="/api/post/{{post.id}}">
+            <h5 class="card-title">{{post.title}}</h5>
+          </a>
+          {{!-- Split into partial? --}}
+          <p class="card-description">{{post.description}}</p>
+          <span class="card-author">Created by {{post.user.name}} on
+        {{format_date createdAt}}</span>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+  {{else}}
+  <div>
+    <p>There's nothing here yet. Create a post to share your thoughts with the world!</p>
+  </div>
+{{/if}}
