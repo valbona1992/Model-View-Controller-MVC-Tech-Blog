@@ -1,16 +1,12 @@
 const router = require('express').Router();
-const sequelize = require('../config/connection');
-const {Post, User, Comment} = require('../model');
-const withAuth = require('../utils/auth');
+const sequelize = require('../config/connection.js');
+const { Post, User, Comment} = require('../models');
 
-// renders dashboard if user is logged in 
-router.get('/', withAuth, (req, res) => {
-    console.log("/dashboard route")
+// Gets the homepage rendered
+router.get('/', (req, res) => {
     Post.findAll({
-        where: {
-            user_id: req.session.user_id
-        },
-        attributes: ['id', 'title', 'content', 'date'],
+        attributes: ['id', 'title', 'date', 'content'],
+        order: [['date', 'DESC']],
         include: [
             {
                 model: User,
@@ -28,7 +24,8 @@ router.get('/', withAuth, (req, res) => {
     })
     .then(postData => {
         const posts = postData.map(post => post.get({plain: true }));
-        res.render('dashboard', {
+        console.log(req.session.loggedIn);
+        res.render('homepage', {
             posts,
             loggedIn: req.session.loggedIn
         });
@@ -38,13 +35,13 @@ router.get('/', withAuth, (req, res) => {
     });
 });
 
-// route to edit post
-router.get('/edit/:id', withAuth, (req, res) => {
+// Render single post on a page
+router.get('/post/:id', (req, res) => {
     Post.findOne({
         where: {
             id: req.params.id
         },
-        attributes: ['id', 'title', 'content', 'date'],
+        attributes: ['id', 'title', 'date', 'content'],
         include: [
             {
                 model: User,
@@ -61,39 +58,38 @@ router.get('/edit/:id', withAuth, (req, res) => {
         ]
     })
     .then(postData => {
-        const posts = postData.map(post => post.get({plain: true }));
-        res.render('dashboard', {
-            posts,
+        if(!postData) {
+            res.status(404).json({message: "No post found"});
+            return;
+        }
+        const post = postData.get({plane: true});
+        res.render('single-post', {
+            post,
             loggedIn: req.session.loggedIn
         });
     })
     .catch(err => {
         res.status(500).json(err);
-    });
+    })
 });
 
-// edit the user 
-router.get('/edituser', withAuth, (req, res) => {
-    User.findOne({
-        attributes: {exclude: ['password']},
-        where: {
-            id: req.session.user_id
-        }
-    })
-    .then(userData => {
-        if(!userData) {
-            res.status(404).json({message: "No user found"});
-            return;
-        }
-        const user = userData.get({plain:true});
-        res.render('edit-user', {
-            user,
-            loggedIn: true
-        });
-    })
-    .catch(err => {
-        res.status(500).json(err);
-    })
+// gets the login page
+router.get('/login', (req, res) => {
+    if(req.session.loggedIn){
+        console.log("logged in");
+        res.redirect('/');
+        return;
+    }
+    res.render('login');
+});
+
+// gets the signup page
+router.get('/signup', (req, res) => {
+    if(req.session.loggedIn){
+        res.redirect('/');
+        return;
+    }
+    res.render('signup');
 });
 
 module.exports = router;
