@@ -37,18 +37,22 @@ Run `npm install` to install application dependencies (express, sequelize, mysql
 
 Create `.env` file to add password privacy. 
 ## Usage
-To run locally, use MYSQL to create the database from the schema folder, and from the command line, run `npm run seed`. Afterwards, run `node server.js`. 
+This app is deployed on Heroku [here](**INSERTLINK).
+
+To run locally, use MYSQL to create the database from the schema folder, and from the command line, run `npm run seed`. Afterwards, run `node server.js`. Once the server is started,the app can open at localhost:3001 in a browser of choice.
 
 Insomnia will be used to test routes on on http//:localhost:3001/.
 
 ## Technology
 - Node.js
 - MySQL
+- Sequelize
 - NPM 
 - ENV
-- Express
+- Express (Session && Handlebars)
 - JavaScript 
 - Insomnia 
+- Heroku 
 
 
 ## Contributors
