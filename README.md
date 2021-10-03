@@ -49,6 +49,7 @@ Insomnia will be used to test routes on on http//:localhost:3001/.
 - Sequelize
 - NPM 
 - ENV
+- bcrypt
 - Express (Session && Handlebars)
 - JavaScript 
 - Insomnia 
