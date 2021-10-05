@@ -21,16 +21,13 @@ AS A developer who writes about tech
 I WANT a CMS-style blog site
 SO THAT I can publish articles, blog posts, and my thoughts and opinions
 ```
-## Demo Video 
-
-🎥 The full video file showing functionality of the application can be found here: [link](https://drive.google.com/file/d/1PdG-3U2d4bdiS9VBLwiSKAyRHI6mQhSM/view?usp=sharing) <br/>
-
-![Screen Recording](Assets/demo.gif)
 
 ## Screenshots 
-Screenshots of the terminal using CML and API routes in Insomnia. 
-<img src="Assets/Screenshot2.png" alt="screenshot" />
-<img src="Assets/Screenshot1.png" alt="screenshot" />
+
+<img src="images/homepage.png" alt="screenshot" />
+<img src="images/login.png" alt="screenshot" />
+<img src="images/dashboard.png" alt="screenshot" />
+<img src="images/comments.png" alt="screenshot" />
 
 ## Installation
 Run `npm install` to install application dependencies (express, sequelize, mysql, and dotenv).
