@@ -1,15 +1,15 @@
 <div>
-<h1 class="text-center"> Blog Posts</h1>
+<h1 class="text-center mb-4 heading-font"> Blog Posts</h1>
 </div>  
 
 {{#each posts as |post|}}
 
 <div class="container">
-<div class="col-md-12">
+<div class="col-md-12 post-color p-2">
     <h3> <a href="/post/{{post.id}}"> {{title}}</a></h3>
     <h6><i class="fas fa-user"></i> by {{post.user.username}}</h6>
     <p> {{content}}</p>
-     <span class="label-primary"> <i class="fas fa-calendar"></i> Posted on {{format_date date}}</span> 
+     <span class="label-primary text-muted"> <i class="fas fa-calendar"></i> Posted on {{format_date date}}</span> 
     </div>
     <hr>
 

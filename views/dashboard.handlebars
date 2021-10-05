@@ -2,29 +2,29 @@
   <h3>My Posts</h3>
 </div>
 
-<div class="container mt-5">
+<div class="container mt-5 mb-4">
     <div class="d-flex justify-content-center">
-        <a type="button" class="btn btn-dark" href="/dashboard/create">+ New Content</a>
+        <a type="button" class="btn btn-dark" href="/dashboard/create"> Add New Post</a>
     </div>
 </div>
 
 {{#if posts}}
-  <div class="col-md-12 post-list">
+
     {{#each posts as |post| }}
-      <div class="card cardLink">
-        <div class="card-body">
-          <a href="/post/{{post.id}}">
-            <h5 class="post-title">{{post.title}}</h5>
-          </a>
-          <p class="post-content">{{post.content}}</p>
-          <span class="card-author">Created by {{post.user.username}} on
-        {{format_date date}}</span>
-        </div>
-      </div>
+<div class="container">
+<div class="col-md-12 post-color p-2">
+    <h3> <a href="/dashboard/edit/{{post.id}}"> {{post.title}}</a></h3>
+    <h6><i class="fas fa-user"></i> by {{post.user.username}}</h6>
+    <p> {{post.content}}</p>
+     <span class="label-primary"> <i class="fas fa-calendar"></i> Posted on {{format_date date}}</span> 
+    </div>
+    <hr>
+</div>
     {{/each}}
+
   </div>
   {{else}}
-  <div>
+  <div class="text-center mt-5">
     <p>There's nothing here yet. Create a post to share your thoughts with the world!</p>
   </div>
 {{/if}}

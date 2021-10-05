@@ -1,16 +1,18 @@
-<div class="card dashboard-card">
-    <div class="card-header">
+<div class="card-body dashboard-card mt-5 m-3 p-5 ">
+    <div class="card-header d-flex justify-content-center">
         <h2>Edit Post</h2>
     </div>
-     <form class="edit-post-form">
-        <div>
-        <input name="post-title" type="text" value="{{post.title}}" />
+     <form class="edit-post-form ">
+        <div class="p-2 d-flex justify-content-center">
+        <input name="post-title" id="post-title" type="text" value="{{post.title}}" />
         </div>
-        <div>
-        <textarea name="post-content">{{post.content}}</textarea>
+        <div class="p-2 d-flex justify-content-center">
+        <textarea name="post-content" id="post-content">{{post.content}}</textarea>
         </div>
-      <button type="submit" class="btn btn-sm btn-primary" id="updatePostButton">Update Post</button>
-      <button type="button" class="btn btn-sm btn-danger" id="deletePostButton">Delete Post</button>
+        <div class="d-flex justify-content-center">
+      <button type="submit" class="btn button m-2" id="updatePostButton">Update Post</button>
+      <button type="button" class="btn buton m-2" id="deletePostButton">Delete Post</button>
+      </div>
   </form>
 
 

@@ -67,10 +67,11 @@ router.get('/edit/:id', withAuth, (req, res) => {
         ]
     })
     .then(postData => {
-        const posts = postData.map(post => post.get({plain: true}));
-        console.log(posts);
+        console.log(postData);
+        const post = postData.get({ plain: true });
+        console.log(post);
         res.render('edit-post', {
-            posts,
+            post,
             loggedIn: req.session.loggedIn
         });
     })

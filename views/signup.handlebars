@@ -1,24 +1,28 @@
-<div> 
-<h2 class="title pb-4">Create Account</h2><hr>
-<form class="signup-form">
-   <div>
-    <label for="username-signup">username:</label>
-    <input type="text" id="username-signup" />
-  </div>
-  <div>
-    <label for="email-signup">email:</label>
-    <input type="text" id="email-signup" />
-  </div>
-  <div>
-    <label for="password-signup">password:</label>
-    <input type="password" id="password-signup" />
-  </div>
-  <div>
-    <button type="submit">signup</button>
-  </div>
-  <a class="nav-link text-center" href="/login">Login If you have an account!</a>
-</form>
 
+<div class="d-flex justify-content-center mt-5">
+    <div class="col-md-6 log-form">
+        <div class=" text-center">
+            <h2 class="page-title">Create Account</h2>
+        </div>
+        <form id="signup-form">
+           <div class="form-group">
+                <label for="username">Username:</label>
+                <input class="col-sm-12 form-input" type="text" id="username-signup" />
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input class="col-sm-12 form-input" type="text" id="email-signup" />
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input class="col-sm-12 form-input" type="password" id="password-signup" />
+            </div>
+            <div class="form-group mt-3">
+                <button class="col-sm-12 btn button" type="submit">Signup</button>
+            </div>
+            <a class="nav-link text-center login mt-3" href="/login">Login if you already have an account!</a>
+        </form>
+    </div>
 </div>
 
 

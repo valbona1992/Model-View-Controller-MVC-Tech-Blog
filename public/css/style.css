@@ -1,0 +1,54 @@
+a {
+    text-decoration: none;
+    color: #B99095;
+}
+
+.post-color {
+    background-color: #B5E5CF;
+    border-radius: 15px;
+    opacity: 80%;
+}
+
+.bg-light {
+    background-color: #B99095!important;
+}
+
+.heading-font {
+    font-family: 'Birthstone', cursive;
+    font-size: 3rem;
+}
+
+button {
+    background-color: #3D5B59!important;
+    color: #FCB5AC!important;
+    }
+
+.login {
+    color: #B99095;
+}
+
+.btn-dark {
+    background-color: #3D5B59!important;
+    color: #FCB5AC!important;
+    border: none!important;
+}
+
+.card-body {
+    background-color:  #B5E5CF;
+    opacity: 90%;
+    border-style:dashed solid;
+}
+
+
+body {
+    background-color: aliceblue;
+}
+
+#logout {
+    cursor: pointer;
+}
+
+.comment-color {
+    color: #3D5B59!important;
+
+}
