@@ -1,4 +1,4 @@
-const editFormHandler = async (event) => {
+const editPostHandler = async (event) => {
     event.preventDefault();
 
     const title = document.querySelector('input[name="post-title"]').value;
@@ -22,5 +22,21 @@ const editFormHandler = async (event) => {
         alert(response.statusText);
       }
   }
+
+  const deletePostHandler = async (event) => {
+    const id = window.location.toString().split('/')[ window.location.toString().split('/').length - 1];
+
+    const response = await fetch(`/api/posts/${id}`, {
+        method: 'DELETE',
+    });
+
+    if (response.ok) {
+        document.location.replace('/dashboard');
+    } else {
+        alert('Failed to delete post');
+    }
+};
   
-  document.querySelector('.edit-post-form').addEventListener('submit', editFormHandler);
+document.querySelector('#updatePostButton').addEventListener('click', editPostHandler);
+
+document.querySelector('#deletePostButton').addEventListener('click', deletePostHandler);

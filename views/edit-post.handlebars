@@ -9,25 +9,12 @@
         <div>
         <textarea name="post-content">{{post.content}}</textarea>
         </div>
-    
-    <button type="submit">Save post</button>
-    <button type="button" class="delete-post-btn">Delete post</button>
+      <button type="submit" class="btn btn-sm btn-primary" id="updatePostButton">Update Post</button>
+      <button type="button" class="btn btn-sm btn-danger" id="deletePostButton">Delete Post</button>
   </form>
-</article>
 
-<form class="comment-form">
-  <div>
-    <textarea name="comment-body"></textarea>
-  </div>
 
-  <div>
-    <button type="submit">add comment</button>
-  </div>
-</form>
 
-{{> comments post.comments}}
-</div>
 
-<script src="/javascript/edit-post.js"></script>
-<script src="/javascript/delete-post.js"></script>
-<script src="/javascript/comment.js"></script>
+<script src="/js/edit-post.js"></script>
+
