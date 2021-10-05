@@ -4,6 +4,7 @@ const { Post, User, Comment} = require('../models');
 
 // Gets the homepage rendered
 router.get('/', (req, res) => {
+    console.log("/ route");
     Post.findAll({
         attributes: ['id', 'title', 'date', 'content'],
         order: [['date', 'DESC']],
@@ -37,6 +38,7 @@ router.get('/', (req, res) => {
 
 // Render single post on a page
 router.get('/post/:id', (req, res) => {
+    console.log("/post/id route");
     Post.findOne({
         where: {
             id: req.params.id
@@ -62,7 +64,8 @@ router.get('/post/:id', (req, res) => {
             res.status(404).json({message: "No post found"});
             return;
         }
-        const post = postData.get({plane: true});
+        const post = postData.get({plain: true});
+        console.log(post);
         res.render('single-post', {
             post,
             loggedIn: req.session.loggedIn

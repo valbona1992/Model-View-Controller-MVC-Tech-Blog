@@ -1,19 +1,24 @@
 <div>
   <h3>My Posts</h3>
 </div>
+
+<div class="container mt-5">
+    <div class="d-flex justify-content-center">
+        <a type="button" class="btn btn-dark" href="/dashboard/create">+ New Content</a>
+    </div>
+</div>
+
 {{#if posts}}
   <div class="col-md-12 post-list">
-    <!-- Loop over each object in the posts array -->
     {{#each posts as |post| }}
       <div class="card cardLink">
         <div class="card-body">
-          <a href="/api/post/{{post.id}}">
-            <h5 class="card-title">{{post.title}}</h5>
+          <a href="/post/{{post.id}}">
+            <h5 class="post-title">{{post.title}}</h5>
           </a>
-          {{!-- Split into partial? --}}
-          <p class="card-description">{{post.description}}</p>
+          <p class="post-content">{{post.content}}</p>
           <span class="card-author">Created by {{post.user.username}} on
-        {{format_date createdAt}}</span>
+        {{format_date date}}</span>
         </div>
       </div>
     {{/each}}

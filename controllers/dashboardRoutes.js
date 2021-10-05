@@ -5,7 +5,11 @@ const withAuth = require('../utils/auth');
 
 // renders dashboard if user is logged in 
 router.get('/', withAuth, (req, res) => {
-    console.log("/dashboard route")
+    console.log("/dashboard route");
+    if (!req.session.loggedIn) {
+        res.redirect('/login');
+    }
+
     Post.findAll({
         where: {
             user_id: req.session.user_id
@@ -40,7 +44,9 @@ router.get('/', withAuth, (req, res) => {
 
 // route to edit post
 router.get('/edit/:id', withAuth, (req, res) => {
-    Post.findOne({
+    console.log("/dashboard/edit/id route");
+    console.log(req.params);
+    Post.findOne({  
         where: {
             id: req.params.id
         },
@@ -61,8 +67,9 @@ router.get('/edit/:id', withAuth, (req, res) => {
         ]
     })
     .then(postData => {
-        const posts = postData.map(post => post.get({plain: true }));
-        res.render('dashboard', {
+        const posts = postData.map(post => post.get({plain: true}));
+        console.log(posts);
+        res.render('edit-post', {
             posts,
             loggedIn: req.session.loggedIn
         });
@@ -74,6 +81,7 @@ router.get('/edit/:id', withAuth, (req, res) => {
 
 
 router.get('/create/', withAuth, (req, res) => {
+    console.log("/dashboard/create route");
     Post.findAll({
         where: {
             user_id: req.session.user_id
@@ -96,7 +104,7 @@ router.get('/create/', withAuth, (req, res) => {
     })
       .then(postData => {
         const posts = postData.map(post => post.get({ plain: true }));
-        res.render('create-post', { posts, loggedIn: true });
+        res.render('add-post', { posts, loggedIn: true });
       })
       .catch(err => {
         res.status(500).json(err);

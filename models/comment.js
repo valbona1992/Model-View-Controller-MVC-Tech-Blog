@@ -24,7 +24,7 @@ Comment.init(
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                lens: [8]
+                len: [8]
             }
         },
         post_id: {
