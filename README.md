@@ -24,10 +24,10 @@ SO THAT I can publish articles, blog posts, and my thoughts and opinions
 
 ## Screenshots 
 
-<img src="images/homepage.png" alt="screenshot" />
-<img src="images/login.png" alt="screenshot" />
-<img src="images/dashboard.png" alt="screenshot" />
-<img src="images/comments.png" alt="screenshot" />
+<img src="public/images/homepage.png" alt="screenshot" />
+<img src="public/images/login.png" alt="screenshot" />
+<img src="public/images/dashboard.png" alt="screenshot" />
+<img src="public/images/comments.png" alt="screenshot" />
 
 ## Installation
 Run `npm install` to install application dependencies (express, sequelize, mysql, and dotenv).
